@@ -37,6 +37,31 @@ namespace ConsoleApplication9
             rdr.Read();
             return rdr.HasRows;
         }
+            // ou
+        public void insertUsuario(Pessoa p)
+        {
+            string sql = "insert into login (id,usuario,senha) values (null,@usuario,@senha)";
+            MySqlCommand cmd = new MySqlCommand(sql, conexao);
+            cmd.Parameters.AddWithValue("@usuario", p.Usuario);
+            cmd.Parameters.AddWithValue("@senha", p.Senha);
+            cmd.ExecuteNonQuery();
+        }
+        public void deleteUsuario(Pessoa p)
+        {
+            string sql = "delete from into login where id = @id";
+            MySqlCommand cmd = new MySqlCommand(sql, conexao);
+            cmd.Parameters.AddWithValue("@id", p.Id);
+            cmd.ExecuteNonQuery();
+        }
+
+        public MySqlDataReader listaUsuario()
+        {
+            string sql = "select * from into login ";
+            MySqlCommand cmd = new MySqlCommand(sql, conexao);
+           cmd.ExecuteNonQuery();
+            return rdr;
+        }
+
     }
 }
 
